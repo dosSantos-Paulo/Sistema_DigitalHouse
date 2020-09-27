@@ -11,6 +11,5 @@ Este sistema deve:
 
 _____________________________________________
 
-> Diagrama UML
-
-![SistemaDH](SistemaDH_V1.jpg)
+> Você pode ver o planejamento deste sistema com o diagrama UML
+- [Diagrama UML](SistemaDH_V1.jpg)
