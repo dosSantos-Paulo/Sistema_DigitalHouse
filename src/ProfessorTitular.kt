@@ -1,7 +1,7 @@
 class ProfessorTitular (nome: String,
                         sobrenome: String,
-                        idProfessor: Int,
+                        codigoDoProfessor: Int,
                         val especialidade: String):
-    Professor(nome, sobrenome, idProfessor){
+    Professor(nome, sobrenome, codigoDoProfessor){
 
 }
