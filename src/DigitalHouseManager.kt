@@ -2,7 +2,7 @@ class DigitalHouseManager () {
 
 
     private var listaDeAlunos = ArrayList<Aluno>()
-    var listaDeProfessores = ArrayList<Professor>()
+    private var listaDeProfessores = ArrayList<Professor>()
     private var listaDeCursos = mutableListOf<Curso>()
     private var listaDeMatriculas = ArrayList<Matricula>()
 
@@ -62,5 +62,13 @@ class DigitalHouseManager () {
         }
         listaDeProfessores.add(novoProfessor)
 
+    }
+
+    fun excluirProfessor(codigoProfessor: Int) {
+        listaDeProfessores.forEach {
+            if (codigoProfessor.equals(it.codigoDoProfessor)) {
+                listaDeProfessores.remove(it)
+            }
+        }
     }
 }
