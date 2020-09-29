@@ -3,7 +3,7 @@ class DigitalHouseManager () {
 
     private var listaDeAlunos = ArrayList<Aluno>()
     private var listaDeProfessores = ArrayList<Professor>()
-    private var listaDeCursos = mutableListOf<Curso>()
+    var listaDeCursos = mutableListOf<Curso>()
     private var listaDeMatriculas = ArrayList<Matricula>()
 
     fun registrarCurso(nome: String, codigoDoCurso: Int, qtdMaxDeAlunos: Int) {
@@ -15,6 +15,14 @@ class DigitalHouseManager () {
         }
         listaDeCursos.add(Curso(nome, codigoDoCurso, qtdMaxDeAlunos))
         return
+    }
+
+    fun excluirCurso(codigoDoCurso: Int) {
+        listaDeCursos.forEach {
+            if (codigoDoCurso.equals(it.codigoDoCurso)){
+                listaDeCursos.remove(it)
+            }
+        }
     }
 
 }
