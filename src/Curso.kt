@@ -6,7 +6,6 @@ data class Curso (private val nome: String,
         var professorTitular:ProfessorTitular
     }
 
-
     var listaDeMatriculados = arrayListOf<Aluno>()
 
     fun adicionarUmAluno(umAluno: Aluno): Boolean{

@@ -3,12 +3,12 @@ class DigitalHouseManager () {
 
     private var listaDeAlunos = ArrayList<Aluno>()
     private var listaDeProfessores = ArrayList<Professor>()
-    private var listaDeCursos = mutableListOf<Curso>()
+    var listaDeCursos = mutableListOf<Curso>()
     private var listaDeMatriculas = ArrayList<Matricula>()
 
     fun registrarCurso(nome: String, codigoCurso: Int, qtdMaxDeAlunos: Int) {
         listaDeCursos.forEach {
-            if (codigoCurso.equals(it.codigoDoCurso)){
+            if (codigoCurso.equals(it)){
                 throw Exception("Código do curso já esta em uso!")
                 return
             }
