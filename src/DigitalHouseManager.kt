@@ -1,7 +1,7 @@
 class DigitalHouseManager () {
 
 
-    private var listaDeAlunos = ArrayList<Aluno>()
+    var listaDeAlunos = ArrayList<Aluno>()
     private var listaDeProfessores = ArrayList<Professor>()
     private var listaDeCursos = mutableListOf<Curso>()
     private var listaDeMatriculas = ArrayList<Matricula>()
@@ -19,7 +19,7 @@ class DigitalHouseManager () {
 
     fun excluirCurso(codigoCurso: Int) {
         listaDeCursos.forEach {
-            if (codigoCurso.equals(it.codigoDoCurso)){
+            if (codigoCurso == it.codigoDoCurso){
                 listaDeCursos.remove(it)
             }
         }
@@ -36,7 +36,7 @@ class DigitalHouseManager () {
                 quantidadeDeHoras)
 
         listaDeProfessores.forEach {
-            if (novoProfessor.equals(it)){
+            if (novoProfessor == it){
                 throw Exception("Código do professor já esta em uso!")
                 return
             }
@@ -55,7 +55,7 @@ class DigitalHouseManager () {
                 especialidade)
 
         listaDeProfessores.forEach {
-            if (novoProfessor.equals(it)){
+            if (novoProfessor == it){
                 throw Exception("Código do professor já esta em uso!")
                 return
             }
@@ -66,9 +66,24 @@ class DigitalHouseManager () {
 
     fun excluirProfessor(codigoProfessor: Int) {
         listaDeProfessores.forEach {
-            if (codigoProfessor.equals(it.codigoDoProfessor)) {
+            if (codigoProfessor == it.codigoDoProfessor) {
                 listaDeProfessores.remove(it)
             }
         }
+    }
+
+    fun matricularAluno(nome: String,
+                        sobrenome: String,
+                        codigoAluno: Int) {
+
+        val novoAluno = Aluno(nome, sobrenome, codigoAluno)
+
+        listaDeAlunos.forEach {
+            if (novoAluno == it) {
+                throw Exception("Código do aluno já esta em uso!")
+                return
+            }
+        }
+        listaDeAlunos.add(novoAluno)
     }
 }
