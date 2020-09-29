@@ -1,6 +1,6 @@
-abstract class Professor (open val nome: String,
-                          open val sobrenome: String,
-                          open val codigoDoProfessor: Int){
+abstract class Professor (protected open val nome: String,
+                          protected open val sobrenome: String,
+                          protected open val codigoDoProfessor: Int){
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

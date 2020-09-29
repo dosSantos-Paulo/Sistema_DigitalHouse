@@ -1,7 +1,7 @@
 class ProfessorAdjunto (nome: String,
                         sobrenome: String,
                         idProfessor: Int,
-                        val horasDeMonitoria:Int ):
+                        private val horasDeMonitoria:Int ):
     Professor(nome, sobrenome, idProfessor) {
 
     override fun toString(): String {
