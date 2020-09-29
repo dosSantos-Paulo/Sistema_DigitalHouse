@@ -1,7 +1,11 @@
 data class Curso (private val nome: String,
-             private val codigoDoCurso: Int,
-             private var professorTitular:ProfessorTitular,
+             val codigoDoCurso: Int,
              private var qtdMaxDeAlunos: Int) {
+
+    init {
+        var professorTitular:ProfessorTitular
+    }
+
 
     var listaDeMatriculados = arrayListOf<Aluno>()
 
