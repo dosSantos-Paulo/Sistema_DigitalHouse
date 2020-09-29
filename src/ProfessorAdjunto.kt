@@ -1,6 +1,10 @@
 class ProfessorAdjunto (nome: String,
                         sobrenome: String,
-                        codigoDoProfessor: Int,
+                        idProfessor: Int,
                         val horasDeMonitoria:Int ):
-    Professor(nome, sobrenome, codigoDoProfessor) {
+    Professor(nome, sobrenome, idProfessor) {
+
+    override fun toString(): String {
+        return super.toString() + " ProfessorAdjunto(horasDeMonitoria='$horasDeMonitoria')"
+    }
 }

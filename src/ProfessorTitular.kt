@@ -4,4 +4,7 @@ class ProfessorTitular (nome: String,
                         val especialidade: String):
     Professor(nome, sobrenome, codigoDoProfessor){
 
+    override fun toString(): String {
+        return super.toString() + " ProfessorTitular(especialidade='$especialidade')"
+    }
 }
