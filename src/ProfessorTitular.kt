@@ -5,6 +5,9 @@ class ProfessorTitular (nome: String,
     Professor(nome, sobrenome, codigoDoProfessor){
 
     override fun toString(): String {
-        return super.toString() + " ProfessorTitular(especialidade='$especialidade')"
+        return "ProfessorAjunto(nome='$nome', " +
+                "sobrenome='$sobrenome', " +
+                "codigoDoProfessor=$codigoDoProfessor, " +
+                "horasDeMonitoria=$especialidade)"
     }
 }

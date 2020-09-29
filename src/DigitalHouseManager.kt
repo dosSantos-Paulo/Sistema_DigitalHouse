@@ -2,7 +2,7 @@ class DigitalHouseManager () {
 
 
     private var listaDeAlunos = ArrayList<Aluno>()
-    var listaDeProfessores = ArrayList<Professor>()
+    private var listaDeProfessores = ArrayList<Professor>()
     private var listaDeCursos = mutableListOf<Curso>()
     private var listaDeMatriculas = ArrayList<Matricula>()
 
