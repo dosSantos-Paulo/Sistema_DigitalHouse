@@ -1,6 +1,8 @@
+import java.lang.Exception
+
 data class Curso (private val nome: String,
-             val codigoDoCurso: Int,
-             private var qtdMaxDeAlunos: Int) {
+                  val codigoDoCurso: Int,
+                  private var qtdMaxDeAlunos: Int) {
 
     init {
         var professorTitular:ProfessorTitular
@@ -9,9 +11,14 @@ data class Curso (private val nome: String,
     var listaDeMatriculados = arrayListOf<Aluno>()
 
     fun adicionarUmAluno(umAluno: Aluno): Boolean{
-        return if (listaDeMatriculados.size < qtdMaxDeAlunos){
+
+        if (listaDeMatriculados.size < qtdMaxDeAlunos){
             listaDeMatriculados.add(umAluno)
-        }else false
+            return true
+        }else {
+            throw Exception("Curso já esta lotado")
+            return false
+        }
     }
 
     fun excluirAluno(umAluno: Aluno){

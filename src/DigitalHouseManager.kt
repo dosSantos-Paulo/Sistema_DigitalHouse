@@ -1,14 +1,14 @@
 class DigitalHouseManager () {
 
 
-    var listaDeAlunos = ArrayList<Aluno>()
+    private var listaDeAlunos = ArrayList<Aluno>()
     private var listaDeProfessores = ArrayList<Professor>()
     private var listaDeCursos = mutableListOf<Curso>()
     private var listaDeMatriculas = ArrayList<Matricula>()
 
     fun registrarCurso(nome: String, codigoCurso: Int, qtdMaxDeAlunos: Int) {
         listaDeCursos.forEach {
-            if (codigoCurso.equals(it)){
+            if (codigoCurso == it.codigoDoCurso){
                 throw Exception("Código do curso já esta em uso!")
                 return
             }
@@ -72,9 +72,7 @@ class DigitalHouseManager () {
         }
     }
 
-    fun matricularAluno(nome: String,
-                        sobrenome: String,
-                        codigoAluno: Int) {
+    fun registrarAluno(nome: String, sobrenome: String, codigoAluno: Int) {
 
         val novoAluno = Aluno(nome, sobrenome, codigoAluno)
 
@@ -85,5 +83,40 @@ class DigitalHouseManager () {
             }
         }
         listaDeAlunos.add(novoAluno)
+    }
+
+    fun matricularAluno(codigoAluno: Int,  codigoCurso: Int) {
+        val aluno = procurarAluno(codigoAluno)
+        val curso = procurarCurso(codigoCurso)
+
+        if (aluno == null || curso == null) {
+            return
+        }
+
+        curso.adicionarUmAluno(aluno)
+    }
+
+
+
+    fun procurarAluno (codigoAluno: Int): Aluno? {
+
+        listaDeAlunos.forEach {
+            if (codigoAluno == it.codigoDoAluno) {
+                return it
+            }
+        }
+        throw Exception("Aluno não encontrado!")
+        return null
+
+    }
+
+    fun procurarCurso (codigoCurso: Int): Curso? {
+        listaDeCursos.forEach {
+            if (codigoCurso == it.codigoDoCurso) {
+                return it
+            }
+        }
+        throw Exception("Aluno não encontrado!")
+        return null
     }
 }
