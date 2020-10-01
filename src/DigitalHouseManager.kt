@@ -94,7 +94,6 @@ class DigitalHouseManager () {
         }
 
         if(!curso.adicionarUmAluno(aluno)) {
-            println("Não há vagas disponíveis para este curso")
             return
         }
         listaDeMatriculas.add(Matricula(aluno,curso))

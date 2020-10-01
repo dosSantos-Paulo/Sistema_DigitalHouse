@@ -12,11 +12,18 @@ data class Curso (private val nome: String,
 
     fun adicionarUmAluno(umAluno: Aluno): Boolean{
 
+        listaDeMatriculados.forEach {
+            if (umAluno == it){
+                println("Aluno já esta matriculado")
+                return false
+            }
+        }
+
         if (listaDeMatriculados.size < qtdMaxDeAlunos){
             listaDeMatriculados.add(umAluno)
             return true
         }else {
-            throw Exception("Curso já esta lotado")
+            println("Curso já esta lotado")
             return false
         }
     }
