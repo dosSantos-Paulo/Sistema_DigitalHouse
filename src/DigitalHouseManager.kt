@@ -3,8 +3,8 @@ class DigitalHouseManager () {
 
     private var listaDeAlunos = ArrayList<Aluno>()
     private var listaDeProfessores = ArrayList<Professor>()
-    var listaDeCursos = mutableListOf<Curso>()
-    var listaDeMatriculas = ArrayList<Matricula>()
+    private var listaDeCursos = mutableListOf<Curso>()
+    private var listaDeMatriculas = ArrayList<Matricula>()
 
     fun registrarCurso(nome: String, codigoCurso: Int, qtdMaxDeAlunos: Int) {
         listaDeCursos.forEach {
@@ -25,10 +25,7 @@ class DigitalHouseManager () {
         }
     }
 
-    fun registrarProfessorAdjunto(nome: String,
-                                  sobrenome: String,
-                                  codigoProfessor: Int,
-                                  quantidadeDeHoras: Int) {
+    fun registrarProfessorAdjunto(nome: String, sobrenome: String, codigoProfessor: Int, quantidadeDeHoras: Int) {
 
         val novoProfessor = ProfessorAdjunto(nome,
                 sobrenome,
@@ -44,10 +41,7 @@ class DigitalHouseManager () {
         listaDeProfessores.add(novoProfessor)
     }
 
-    fun registrarProfessorTitular (nome: String,
-                                      sobrenome: String,
-                                      codigoProfessor: Int,
-                                      especialidade: String) {
+    fun registrarProfessorTitular (nome: String, sobrenome: String, codigoProfessor: Int, especialidade: String) {
 
         val novoProfessor = ProfessorTitular(nome,
                 sobrenome,
@@ -100,7 +94,33 @@ class DigitalHouseManager () {
         println("Matricula realizada")
     }
 
+    fun alocarProfessores(codigoCurso: Int, codigoProfessorTitular: Int, codigoProfessorAdjunto: Int) {
 
+        val curso = procurarCurso(codigoCurso)
+        val titular = procurarProfessor(codigoProfessorTitular)
+        val adjunto = procurarProfessor(codigoProfessorAdjunto)
+
+        if (curso == null || titular == null || adjunto == null) {
+            return
+        }
+
+        curso.professorTitular = titular
+        curso.professorAdjunto = adjunto
+
+
+    }
+
+    fun procurarProfessor (codigoProfessor:Int): Professor? {
+
+        listaDeProfessores.forEach {
+            if (codigoProfessor == it.codigoDoProfessor) {
+                return it
+            }
+        }
+
+        throw Exception("Professor não encontrado")
+        return null
+    }
 
     fun procurarAluno (codigoAluno: Int): Aluno? {
 
