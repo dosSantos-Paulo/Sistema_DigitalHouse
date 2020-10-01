@@ -8,6 +8,6 @@ class ProfessorTitular (nome: String,
         return "ProfessorAjunto(nome='$nome', " +
                 "sobrenome='$sobrenome', " +
                 "codigoDoProfessor=$codigoDoProfessor, " +
-                "horasDeMonitoria=$especialidade)"
+                "especialidade=$especialidade)"
     }
 }

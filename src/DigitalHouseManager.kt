@@ -7,22 +7,18 @@ class DigitalHouseManager () {
     private var listaDeMatriculas = ArrayList<Matricula>()
 
     fun registrarCurso(nome: String, codigoCurso: Int, qtdMaxDeAlunos: Int) {
-        listaDeCursos.forEach {
-            if (codigoCurso == it.codigoDoCurso){
-                throw Exception("Código do curso já esta em uso!")
-                return
-            }
+        val validador = procurarCurso(codigoCurso)
+        if (validador == null){
+            listaDeCursos.add(Curso(nome, codigoCurso, qtdMaxDeAlunos))
+            return
         }
-        listaDeCursos.add(Curso(nome, codigoCurso, qtdMaxDeAlunos))
+        throw Exception("Código do curso já esta em uso!")
         return
     }
 
     fun excluirCurso(codigoCurso: Int) {
-        listaDeCursos.forEach {
-            if (codigoCurso == it.codigoDoCurso){
-                listaDeCursos.remove(it)
-            }
-        }
+        val curso = procurarCurso((codigoCurso))
+        listaDeCursos.remove(curso)
     }
 
     fun registrarProfessorAdjunto(nome: String, sobrenome: String, codigoProfessor: Int, quantidadeDeHoras: Int) {
@@ -59,11 +55,8 @@ class DigitalHouseManager () {
     }
 
     fun excluirProfessor(codigoProfessor: Int) {
-        listaDeProfessores.forEach {
-            if (codigoProfessor == it.codigoDoProfessor) {
-                listaDeProfessores.remove(it)
-            }
-        }
+        val professor = procurarProfessor(codigoProfessor)
+        listaDeProfessores.remove(professor)
     }
 
     fun registrarAluno(nome: String, sobrenome: String, codigoAluno: Int) {

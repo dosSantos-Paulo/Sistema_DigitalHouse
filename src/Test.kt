@@ -2,8 +2,11 @@ fun main () {
     val manager = DigitalHouseManager()
 
     manager.registrarCurso("Kotlin", 1, 5)
+    manager.registrarCurso("Java", 2, 5)
     manager.registrarProfessorTitular("Felipe", "J.", 1, "Android")
     manager.registrarProfessorAdjunto("Lucas", "A.", 2, 20)
+    manager.registrarProfessorAdjunto("fake", "F.", 3, 20)
+
 
     println("Registre 5 alunos")
     var contador = 0
@@ -22,7 +25,9 @@ fun main () {
 
     } while (contador < 5)
 
+    manager.excluirProfessor(3)
+    manager.excluirCurso(2)
     manager.alocarProfessores(1,1,2)
 
-    print(manager.procurarCurso(1).toString())
+    print(manager.procurarCurso(1))
 }
