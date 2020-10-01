@@ -68,15 +68,16 @@ class DigitalHouseManager () {
 
     fun registrarAluno(nome: String, sobrenome: String, codigoAluno: Int) {
 
-        val novoAluno = Aluno(nome, sobrenome, codigoAluno)
+        val confirma = procurarAluno(codigoAluno)
 
-        listaDeAlunos.forEach {
-            if (novoAluno == it) {
-                throw Exception("Código do aluno já esta em uso!")
-                return
-            }
+        if (confirma == null) {
+            val novoAluno = Aluno(nome, sobrenome, codigoAluno)
+            listaDeAlunos.add(Aluno(nome, sobrenome, codigoAluno))
+            return
+        } else {
+            throw Exception("Código do aluno já está em uso!")
         }
-        listaDeAlunos.add(novoAluno)
+
     }
 
     fun matricularAluno(codigoAluno: Int,  codigoCurso: Int) {
@@ -117,8 +118,6 @@ class DigitalHouseManager () {
                 return it
             }
         }
-
-        throw Exception("Professor não encontrado")
         return null
     }
 
@@ -129,7 +128,6 @@ class DigitalHouseManager () {
                 return it
             }
         }
-        throw Exception("Aluno não encontrado!")
         return null
 
     }
@@ -140,7 +138,6 @@ class DigitalHouseManager () {
                 return it
             }
         }
-        throw Exception("Aluno não encontrado!")
         return null
     }
 }
