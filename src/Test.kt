@@ -11,23 +11,33 @@ fun main () {
     println("Registre 5 alunos")
     var contador = 0
     do {
-        print("nome: ")
-        val nome = readLine()!!
-        print("Sobrenome: ")
-        val sobrenome = readLine()!!
-        print("id: ")
-        val id = readLine()!!.toInt()
+        try {
+            print("nome: ")
+            val nome = readLine()!!
+            print("Sobrenome: ")
+            val sobrenome = readLine()!!
+            print("id: ")
+            val id = readLine()!!.toInt()
 
-        manager.registrarAluno(nome, sobrenome, id)
-        manager.matricularAluno(id,1)
+            manager.registrarAluno(nome, sobrenome, id)
+            manager.matricularAluno(id,1)
+            contador++
 
-        contador++
+        } catch (ex: Exception) {
+            println(ex.message)
+        }
 
     } while (contador < 5)
 
-    manager.excluirProfessor(3)
-    manager.excluirCurso(2)
-    manager.alocarProfessores(1,1,2)
+    try {
+        manager.excluirProfessor(3)
+        manager.excluirCurso(2)
+        manager.alocarProfessores(1,1,2)
+    } catch (ex: Exception) {
+        println(ex.message)
+        print(ex.stackTrace)
+    }
+
 
     print(manager.procurarCurso(1))
 }
